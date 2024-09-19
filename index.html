@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="learn-finance.html">Learn Finance</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <h2>Track Your Budget Effectively</h2>
+            <p>Manage your expenses, set budget goals, and stay on top of your finances.</p>
+        </div>
+    </div>
+
+    <script>
+        // Example of fading the navigation bar
+        const navbarLinks = document.querySelectorAll('.navbar ul li a');
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.navbar').style.opacity = '0.5';
+                setTimeout(() => {
+                    document.querySelector('.navbar').style.opacity = '1';
+                }, 500); // Reset opacity after 0.5 seconds
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="learn-finance.html">Learn Finance</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="main-content">
+        <div class="dashboard-container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>Welcome, [User's Name]!</h1>
+                <p>Your financial health in one place. Manage your budget efficiently and reach your financial goals faster.</p>
+            </div>
+
+            <!-- Overview Section -->
+            <div class="overview info-section">
+                <h3>Financial Overview</h3>
+                <p>Check your current budget status, upcoming expenses, and savings goals all in one glance.</p>
+                <ul>
+                    <li><strong>Monthly Budget:</strong> $5,000</li>
+                    <li><strong>Expenses This Month:</strong> $1,750</li>
+                    <li><strong>Savings Goal Progress:</strong> 30% Complete</li>
+                </ul>
+            </div>
+
+            <!-- Budget Features -->
+            <div class="features">
+                <!-- Track Expenses -->
+                <div class="info-section">
+                    <h3>Track Monthly Expenses</h3>
+                    <p>Keep track of all your spending in real-time. Categorize your expenses and see how much you've spent across different areas like food, transportation, and entertainment.</p>
+                    <button onclick="location.href='track-expenses.html'">Track Expenses</button>
+                </div>
+
+                <!-- Set Budget Goals -->
+                <div class="info-section">
+                    <h3>Set Budget Goals</h3>
+                    <p>Create personalized budget goals for each category like groceries, dining out, and savings. You can set limits and track your progress throughout the month.</p>
+                    <button onclick="location.href='set-budget-goals.html'">Set Budget Goals</button>
+                </div>
+
+                <!-- Spending Reports -->
+                <div class="info-section">
+                    <h3>Spending Reports</h3>
+                    <p>Review detailed reports on your spending habits over the last few months. Get insights on where you can save more and make smarter decisions.</p>
+                    <button onclick="location.href='spending-reports.html'">View Reports</button>
+                </div>
+
+                <!-- Create Savings Goals -->
+                <div class="info-section">
+                    <h3>Create Savings Goals</h3>
+                    <p>Plan your future by setting up savings goals for vacations, emergencies, or any other important purchases. You can track your savings progress and make adjustments along the way.</p>
+                    <button onclick="location.href='savings-goals.html'">Create Savings Goals</button>
+                </div>
+
+                <!-- Connect Bank Accounts -->
+                <div class="info-section">
+                    <h3>Connect Bank Accounts</h3>
+                    <p>For real-time updates, securely link your bank accounts and credit cards. This feature allows the app to automatically track your transactions and categorize expenses.</p>
+                    <button onclick="location.href='connect-bank.html'">Connect Accounts</button>
+                </div>
+            </div>
+
+            <!-- Actionable Section -->
+            <div class="actions">
+                <h3>Manage Your Finances</h3>
+                <button onclick="location.href='track-expenses.html'">Track Expenses</button>
+                <button onclick="location.href='set-budget-goals.html'">Set Savings Goals</button>
+                <button onclick="location.href='budget-planner.html'">Plan Your Budget</button>
+            </div>
+
+            <!-- Dashboard Footer -->
+            <div class="dashboard-footer">
+                <p>&copy; 2024 Budget Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
