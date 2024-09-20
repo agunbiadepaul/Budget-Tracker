@@ -6,7 +6,7 @@ function handleLogin(e) {
   const password = document.getElementById('password').value;
 
   try {
-    const response = fetch('http://localhost:5000/api/auth/login', {
+    const response = fetch('http://54.236.48.167/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
