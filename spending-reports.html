@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending Reports - Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="spending-reports.html">Spending Reports</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h2>Spending Reports</h2>
+        <canvas id="spending-chart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch spending data and display a chart
+        fetch('/api/reports/spending', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const ctx = document.getElementById('spending-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.categories,
+                    datasets: [{
+                        label: 'Spending',
+                        data: data.amounts,
+                        backgroundColor: ['#4CAF50', '#FF9800', '#F44336', '#3F51B5']
+                    }]
+                }
+            });
+        })
+        .catch(err => console.error(err));
+    </script>
+</body>
+</html>

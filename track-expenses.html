@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Expenses - Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="track-expenses.html">Track Expenses</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Expense Tracking Form -->
+    <div class="main-content">
+        <h2>Track Your Monthly Expenses</h2>
+        <form id="expense-form">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="food">Food</option>
+                <option value="transportation">Transportation</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="bills">Bills</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description">
+
+            <button type="submit">Add Expense</button>
+        </form>
+
+        <!-- Displaying Expenses -->
+        <div id="expenses-list">
+            <h3>Your Expenses</h3>
+            <ul id="expense-items">
+                <!-- Expenses will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const expenseForm = document.getElementById('expense-form');
+        const expenseList = document.getElementById('expense-items');
+
+        // Fetch and display existing expenses
+        fetch('/api/expenses', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(expense => {
+                const li = document.createElement('li');
+                li.textContent = `${expense.amount} - ${expense.category}: ${expense.description}`;
+                expenseList.appendChild(li);
+            });
+        });
+
+        // Handle form submission
+        expenseForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const amount = document.getElementById('amount').value;
+            const category = document.getElementById('category').value;
+            const description = document.getElementById('description').value;
+
+            fetch('/api/expenses/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+                },
+                body: JSON.stringify({ amount, category, description })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const li = document.createElement('li');
+                li.textContent = `${data.amount} - ${data.category}: ${data.description}`;
+                expenseList.appendChild(li);
+
+                // Clear the form
+                expenseForm.reset();
+            })
+            .catch(err => console.error(err));
+        });
+    </script>
+</body>
+</html>
