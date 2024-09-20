@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Budget Goals - Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="set-budget-goals.html">Set Budget Goals</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h2>Set Your Budget Goals</h2>
+        <form id="budget-form">
+            <label for="goal">Goal:</label>
+            <input type="text" id="goal" name="goal" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <button type="submit">Set Goal</button>
+        </form>
+
+        <div id="goals-list">
+            <h3>Your Budget Goals</h3>
+            <ul id="goal-items">
+                <!-- Budget goals will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const budgetForm = document.getElementById('budget-form');
+        const goalList = document.getElementById('goal-items');
+
+        // Fetch and display existing goals
+        fetch('/api/goals', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(goal => {
+                const li = document.createElement('li');
+                li.textContent = `${goal.goal}: $${goal.amount}`;
+                goalList.appendChild(li);
+            });
+        });
+
+        // Handle form submission
+        budgetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const goal = document.getElementById('goal').value;
+            const amount = document.getElementById('amount').value;
+
+            fetch('/api/goals/set', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+                },
+                body: JSON.stringify({ goal, amount })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const li = document.createElement('li');
+                li.textContent = `${data.goal}: $${data.amount}`;
+                goalList.appendChild(li);
+
+                // Clear the form
+                budgetForm.reset();
+            })
+            .catch(err => console.error(err));
+        });
+    </script>
+</body>
+</html>
