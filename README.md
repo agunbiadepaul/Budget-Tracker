@@ -53,7 +53,7 @@ The **Budget Tracker App** helps users manage their finances by tracking income,
 
 ## File Structure
 
-- **index.html**: Main landing page with registration and login options.
+- **index.html**: Main landing page with registration and login, home page and learning options.
 - **about-us.html**: Page describing the mission and purpose of the Budget Tracker.
 - **login.html**: User login page.
 - **register.html**: User registration form.
