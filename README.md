@@ -40,7 +40,7 @@ The **Budget Tracker App** helps users manage their finances by tracking income,
 
 6. Open the app in your browser:
     ```bash
-    http://localhost:3000
+    http://localhost:5000
     ```
 
 ## Technologies Used
