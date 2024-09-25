@@ -47,7 +47,7 @@ body {
 .navbar ul li a:hover {
   background-color: #3498db;
   border-radius: 4px;
-  color: #fff;
+  color: #1b0909;
 }
 
 /* Main Content */
@@ -57,11 +57,11 @@ body {
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
-  margin-top: 80px; /* To accommodate the fixed navbar */
+  margin-top: 60px; /* To accommodate the fixed navbar */
   background-image: url('background1.jpg');
   background-size: cover;
   background-position: center;
-  color: white;
+  color: rgb(6, 2, 2);
   min-height: 100vh;
 }
 
@@ -71,14 +71,14 @@ body {
 }
 
 .hero-section h2 {
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
 .hero-section p {
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: 550;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -222,7 +222,7 @@ h2 {
 .about-content p, .about-content ul {
   font-size: 1.5em;
   line-height: 1.8;
-  color: #f6f5f1;
+  color: #150311;
   text-shadow: rgb(0, 0, 0);
 }
 
